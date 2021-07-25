@@ -7,6 +7,7 @@ import config from './config/index.js';
 import 'express-async-errors';
 
 import { SERVER_ERROR } from './data/commonErrors.js';
+import { getRoutes } from './routes/index.js';
 
 // Generic error handler for situations where we didn't handle errors properly
 const errorMiddleware = (error, req, res, next) => {
@@ -40,6 +41,10 @@ const startServer = () => {
     },
   );
 
+  // Mount entire app to the /api route
+  app.use('/api', getRoutes());
+
+  // Generic error handler
   app.use(errorMiddleware);
 
   app.listen(config.port, () => {
