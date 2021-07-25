@@ -8,6 +8,7 @@ import 'express-async-errors';
 
 import { getRoutes } from './routes/index.js';
 import genericErrorHandler from './middlewares/genericErrorHandler.js';
+import notFoundError from './middlewares/notFoundError.js';
 
 const startServer = () => {
   const app = express();
@@ -23,6 +24,8 @@ const startServer = () => {
   );
 
   app.use('/api', getRoutes());
+  // Catch 404 errors
+  app.use(notFoundError);
 
   app.use(genericErrorHandler);
 
