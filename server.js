@@ -1,9 +1,9 @@
-import express from "express";
-import logger from "loglevel";
-import config from "./config/index.js";
+import express from 'express';
+import logger from 'loglevel';
+import config from './config/index.js';
 
-// simple async/await error handling
-import "express-async-errors";
+// Simple async/await error handling
+import 'express-async-errors';
 
 const startServer = () => {
   const app = express();

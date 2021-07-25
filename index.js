@@ -1,6 +1,6 @@
-import logger from "loglevel";
-import { startServer } from "./server.js";
+import logger from 'loglevel';
+import { startServer } from './server.js';
 
-logger.setLevel("info");
+logger.setLevel('info');
 
 startServer();
