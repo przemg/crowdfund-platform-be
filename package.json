@@ -1,0 +1,10 @@
+{
+  "name": "crowdfund-be",
+  "engines": {
+    "node": "16.3.0"
+  },
+  "type": "module",
+  "version": "1.0.0",
+  "main": "index.js",
+  "private": true
+}
