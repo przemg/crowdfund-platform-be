@@ -1,9 +1,9 @@
 # Crowdfunding platform (currently in development)
 
-This is a complex application inspiered by [Crowdfunding product page challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/crowdfunding-product-page-7uvcZe7ZR) extended to a fully functional app.
+This application is a place where signed-up users can create new fundraisers. Guests can back initiatives with any amount or choose one of reward which have a predetermined minimum pledge. Inspired by [Crowdfunding product page challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/crowdfunding-product-page-7uvcZe7ZR) but extended to a fully functional app.
  - This application is the backend API service for a frontend [React application](https://github.com/przemg/crowdfund-platform-fe)
 
-## Crowdfunding platform overview
+## Application overview
 
 ### The challenge
 
