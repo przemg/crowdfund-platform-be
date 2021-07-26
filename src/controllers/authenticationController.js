@@ -1,9 +1,9 @@
-import { accountSignUpService } from '../services/authenticationService.js';
+import { signupService } from '../services/authenticationService.js';
 
-export const accountSignUpController = async (req, res) => {
+export const signupController = async (req, res) => {
   const { email, name, password } = req.body;
 
-  const accountRecord = await accountSignUpService({ email, name, password });
+  const accountRecord = await signupService({ email, name, password });
 
   req.session.accountId = accountRecord._id;
 

@@ -1,11 +1,11 @@
 import express from 'express';
-import { accountSignUpController } from '../controllers/authenticationController.js';
-import signUpValidation from '../middlewares/validators/signUpValidation.js';
+import { signupController } from '../controllers/authenticationController.js';
+import signupValidation from '../middlewares/validators/signupValidation.js';
 
 const getAuthenticationRoutes = () => {
   const router = express.Router();
 
-  router.post('/sign-up', signUpValidation, accountSignUpController);
+  router.post('/signup', signupValidation, signupController);
 
   return router;
 };

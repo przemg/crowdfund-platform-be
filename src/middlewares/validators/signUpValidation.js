@@ -17,7 +17,7 @@ const schema = yup.object().shape({
     .required(),
 });
 
-const signUpValidation = async (req, res, next) => {
+const signupValidation = async (req, res, next) => {
   try {
     await schema.validate(req.body, { abortEarly: false });
     next();
@@ -26,4 +26,4 @@ const signUpValidation = async (req, res, next) => {
   }
 };
 
-export default signUpValidation;
+export default signupValidation;
