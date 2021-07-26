@@ -23,10 +23,11 @@ const startServer = () => {
     },
   );
 
+  // Mount all endpoints
   app.use('/api', getRoutes());
-  // Catch 404 errors
-  app.use(notFoundError);
 
+  // Error handling
+  app.use(notFoundError);
   app.use(genericErrorHandler);
 
   app.listen(config.port, () => {

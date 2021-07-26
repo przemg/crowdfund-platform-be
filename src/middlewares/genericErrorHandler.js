@@ -9,15 +9,13 @@ const genericErrorHandler = (error, req, res, next) => {
     return next(error);
   }
 
-  let { status, name, message } = error;
-
   logger.error(error);
 
-  status ??= SERVER_ERROR.status;
-  name ??= SERVER_ERROR.name;
-  message ??= SERVER_ERROR.message;
+  const { status = SERVER_ERROR.status, type = SERVER_ERROR.type, message } = error;
 
-  return res.status(status).json({ error: { name, message } });
+  return res
+    .status(status)
+    .json({ error: { status, type, message: status >= 500 ? SERVER_ERROR.message : message } });
 };
 
 export default genericErrorHandler;

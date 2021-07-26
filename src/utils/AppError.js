@@ -2,11 +2,11 @@
 class AppError extends Error {
   constructor(
     commonErrorObject,
-    { customName = null, customMessage = null, customStatus = null } = {},
+    { customType = null, customMessage = null, customStatus = null } = {},
   ) {
     super();
 
-    this.name = customName ?? commonErrorObject.name;
+    this.type = customType ?? commonErrorObject.type;
     this.message = customMessage ?? commonErrorObject.message;
     this.status = customStatus ?? commonErrorObject.status;
   }
