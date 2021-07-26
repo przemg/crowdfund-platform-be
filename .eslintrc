@@ -13,6 +13,7 @@
     "prettier/prettier": "error",
     "import/extensions": "off",
     "import/prefer-default-export": "off",
-    "object-curly-newline": ["error", { "multiline": true }]
+    "object-curly-newline": ["error", { "multiline": true, "consistent": true }],
+    "no-underscore-dangle": ["error", { "allow": ["_id"] }]
   }
 }

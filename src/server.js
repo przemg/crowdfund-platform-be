@@ -23,6 +23,8 @@ const startServer = () => {
     },
   );
 
+  app.use(express.json());
+
   // Mount all endpoints
   app.use('/api', getRoutes());
 
