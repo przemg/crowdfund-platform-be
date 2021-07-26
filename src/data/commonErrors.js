@@ -21,3 +21,9 @@ export const PASSED_DATA_EXISTS = {
   type: 'PassedDataExists',
   message: 'Entered data is already in use',
 };
+
+export const WRONG_CREDENTIALS = {
+  status: 400,
+  type: 'WrongCredentials',
+  message: 'Email or password is wrong',
+};
