@@ -14,7 +14,7 @@ Users should be able to:
 - Edit and manage account
 - Browse existing projects for funding
 - Search projects by their name and sort them
-- Bookmark interesting projects
-- Create own project
+- Bookmark interesting projects (only signed users)
+- Create own project (only signed users)
 - Make a selection of which pledge to make
 - Choose one of rewards kits with minimum pledge value
