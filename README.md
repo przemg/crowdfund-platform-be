@@ -2,6 +2,8 @@
 
 This application is a place where signed-up users can create new fundraisers. Guests can back initiatives with any amount or choose one of reward which have a predetermined minimum pledge. Inspired by [Crowdfunding product page challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/crowdfunding-product-page-7uvcZe7ZR) but extended to a fully functional app.
  - This application is the backend API service for a frontend [React application](https://github.com/przemg/crowdfund-platform-fe)
+ - Access to protected endpoints is scoped down and require authentication (session-based)
+ - Requests which mutate data have to contain csrf tokens (double submit cookie technique to protect against CSRF attacks)
 
 ## Application overview
 
