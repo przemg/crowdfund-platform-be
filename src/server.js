@@ -1,6 +1,7 @@
 import express from 'express';
 import logger from 'loglevel';
 import mongoose from 'mongoose';
+import session from 'express-session';
 import config from './config/index.js';
 
 // Simple async/await error handling
@@ -9,6 +10,7 @@ import 'express-async-errors';
 import { getRoutes } from './routes/index.js';
 import genericErrorHandler from './middlewares/genericErrorHandler.js';
 import notFoundError from './middlewares/notFoundError.js';
+import { sessionConfig } from './config/sessionConfig.js';
 
 const startServer = () => {
   const app = express();
@@ -24,6 +26,7 @@ const startServer = () => {
   );
 
   app.use(express.json());
+  app.use(session(sessionConfig));
 
   // Mount all endpoints
   app.use('/api', getRoutes());

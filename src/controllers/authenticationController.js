@@ -5,6 +5,8 @@ export const accountSignUpController = async (req, res) => {
 
   const accountRecord = await accountSignUpService({ email, name, password });
 
+  req.session.accountId = accountRecord._id;
+
   res.status(201).json({
     message: 'Account successfully created',
     data: {
