@@ -4,9 +4,9 @@ import { USER_UNAUTHENTICATED, USER_ALREADY_LOGGED_IN } from '../data/commonErro
 const isAuthenticated =
   (denyWhenIsAuthenticated = false) =>
   (req, res, next) => {
-    const { accountId } = req.session;
-    if (!denyWhenIsAuthenticated && !accountId) throw new AppError(USER_UNAUTHENTICATED);
-    if (denyWhenIsAuthenticated && accountId) throw new AppError(USER_ALREADY_LOGGED_IN);
+    const { account } = req.session;
+    if (!denyWhenIsAuthenticated && !account) throw new AppError(USER_UNAUTHENTICATED);
+    if (denyWhenIsAuthenticated && account) throw new AppError(USER_ALREADY_LOGGED_IN);
 
     next();
   };
