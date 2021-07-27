@@ -39,3 +39,9 @@ export const USER_UNAUTHENTICATED = {
   type: 'UserUnauthenticated',
   message: 'User identity has not been confirmed, please log in and try again',
 };
+
+export const CSRF_BAD_TOKEN = {
+  status: 403,
+  type: 'CsrfBadToken',
+  message: 'Invalid csrf token',
+};

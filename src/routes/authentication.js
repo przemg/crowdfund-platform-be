@@ -4,6 +4,7 @@ import {
   loginController,
   logoutController,
   getAuthenticatedUserDataController,
+  getCsrfTokenController,
 } from '../controllers/authenticationController.js';
 import isAuthenticated from '../middlewares/isAuthenticated.js';
 import { signupValidation, loginValidation } from '../middlewares/validators/index.js';
@@ -15,6 +16,7 @@ const getAuthenticationRoutes = () => {
   router.post('/login', isAuthenticated(true), loginValidation, loginController);
   router.delete('/logout', isAuthenticated(), logoutController);
   router.get('/me', isAuthenticated(), getAuthenticatedUserDataController);
+  router.get('/csrf-token', getCsrfTokenController);
 
   return router;
 };

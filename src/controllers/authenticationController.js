@@ -48,3 +48,7 @@ export const getAuthenticatedUserDataController = (req, res) => {
     data: account,
   });
 };
+
+export const getCsrfTokenController = (req, res) => {
+  res.status(200).json({ csrfToken: req.csrfToken() });
+};
