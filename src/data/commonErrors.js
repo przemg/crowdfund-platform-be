@@ -27,3 +27,15 @@ export const WRONG_CREDENTIALS = {
   type: 'WrongCredentials',
   message: 'Email or password is wrong',
 };
+
+export const USER_ALREADY_LOGGED_IN = {
+  status: 400,
+  type: 'UserAlreadyLoggedIn',
+  message: 'User is already logged in and cannot access this resource',
+};
+
+export const USER_UNAUTHENTICATED = {
+  status: 401,
+  type: 'UserUnauthenticated',
+  message: 'User identity has not been confirmed, please log in and try again',
+};
