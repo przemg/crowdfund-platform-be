@@ -33,3 +33,7 @@ export const loginController = async (req, res) => {
     },
   });
 };
+
+export const logoutController = (req, res) => {
+  req.session.destroy(() => res.status(200).json({ message: 'Successfully logged out' }));
+};
