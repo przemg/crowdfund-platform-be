@@ -1,5 +1,5 @@
 {
-  "extends": ["prettier", "airbnb-base"],
+  "extends": ["airbnb-base", "prettier"],
   "plugins": ["prettier"],
   "env": {
     "es2021": true,
@@ -12,6 +12,8 @@
   "rules": {
     "prettier/prettier": "error",
     "import/extensions": "off",
-    "import/prefer-default-export": "off"
+    "import/prefer-default-export": "off",
+    "object-curly-newline": ["error", { "multiline": true, "consistent": true }],
+    "no-underscore-dangle": ["error", { "allow": ["_id"] }]
   }
 }

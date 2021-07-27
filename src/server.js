@@ -1,33 +1,38 @@
 import express from 'express';
 import logger from 'loglevel';
-import mongoose from 'mongoose';
+import session from 'express-session';
+import csrf from 'csurf';
+import cookieParser from 'cookie-parser';
 import config from './config/index.js';
+import connect from './utils/connect.js';
 
 // Simple async/await error handling
 import 'express-async-errors';
 
 import { getRoutes } from './routes/index.js';
 import genericErrorHandler from './middlewares/genericErrorHandler.js';
+import csrfErrorHandler from './middlewares/csrfErrorHandler.js';
 import notFoundError from './middlewares/notFoundError.js';
+import { sessionConfig } from './config/sessionConfig.js';
+import { csrfConfig } from './config/csrfConfig.js';
 
 const startServer = () => {
   const app = express();
 
   // Connect to database
-  mongoose.connect(
-    config.databaseURL,
-    { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true },
-    (err) => {
-      if (err) throw new Error(err);
-      logger.info('Successfully connected to the database');
-    },
-  );
+  connect();
+
+  app.use(express.json());
+  app.use(cookieParser());
+  app.use(session(sessionConfig));
+  app.use(csrf(csrfConfig));
 
   // Mount all endpoints
   app.use('/api', getRoutes());
 
   // Error handling
   app.use(notFoundError);
+  app.use(csrfErrorHandler);
   app.use(genericErrorHandler);
 
   app.listen(config.port, () => {

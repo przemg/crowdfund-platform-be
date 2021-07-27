@@ -11,11 +11,16 @@ const genericErrorHandler = (error, req, res, next) => {
 
   logger.error(error);
 
-  const { status = SERVER_ERROR.status, type = SERVER_ERROR.type, message } = error;
+  const { status = SERVER_ERROR.status, type = SERVER_ERROR.type, message, details } = error;
 
-  return res
-    .status(status)
-    .json({ error: { status, type, message: status >= 500 ? SERVER_ERROR.message : message } });
+  return res.status(status).json({
+    error: {
+      status,
+      type,
+      message: status >= 500 ? SERVER_ERROR.message : message,
+      details: details?.length ? details : undefined,
+    },
+  });
 };
 
 export default genericErrorHandler;
