@@ -7,7 +7,9 @@ import {
   getCsrfTokenController,
 } from '../controllers/authenticationController.js';
 import isAuthenticated from '../middlewares/isAuthenticated.js';
-import { signupValidation, loginValidation } from '../middlewares/validators/index.js';
+import { authenticationValidation } from '../middlewares/validators/index.js';
+
+const { signupValidation, loginValidation } = authenticationValidation;
 
 const getAuthenticationRoutes = () => {
   const router = express.Router();

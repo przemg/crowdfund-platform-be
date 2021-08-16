@@ -1,4 +1,3 @@
-import signupValidation from './signupValidation.js';
-import loginValidation from './loginValidation.js';
+import authenticationValidation from './authenticationValidation.js';
 
-export { signupValidation, loginValidation };
+export { authenticationValidation };
