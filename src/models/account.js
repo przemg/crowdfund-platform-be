@@ -4,8 +4,6 @@ const accountSchema = new mongoose.Schema({
   email: {
     type: String,
     required: true,
-    min: 6,
-    max: 20,
     unique: true,
     lowercase: true,
     trim: true,
@@ -13,12 +11,14 @@ const accountSchema = new mongoose.Schema({
   name: {
     type: String,
     required: true,
-    min: 2,
-    max: 100,
+    minLength: 2,
+    maxLength: 100,
     trim: true,
   },
   password: {
     type: String,
+    minLength: 6,
+    maxLength: 20,
     required: true,
   },
 });
