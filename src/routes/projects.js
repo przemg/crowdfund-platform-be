@@ -7,7 +7,7 @@ import isAuthenticated from '../middlewares/isAuthenticated.js';
 import { createProjectValidation } from '../middlewares/validators/index.js';
 import multer from '../config/multer.js';
 
-const getProjectRoutes = () => {
+const getProjectsRoutes = () => {
   const router = express.Router();
 
   router
@@ -26,4 +26,4 @@ const getProjectRoutes = () => {
   return router;
 };
 
-export { getProjectRoutes };
+export { getProjectsRoutes };
