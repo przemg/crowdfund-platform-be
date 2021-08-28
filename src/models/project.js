@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 
 const projectSchema = new mongoose.Schema(
   {
-    accountId: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Account' }],
+    account: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Account' }],
     title: {
       type: String,
       required: true,

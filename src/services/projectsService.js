@@ -28,7 +28,7 @@ export const createProjectService = async ({
   const rewardsJSON = JSON.parse(rewards);
 
   const projectRecord = await project.create({
-    accountId: account._id,
+    account: account._id,
     title,
     shortDescription,
     about,
@@ -52,4 +52,13 @@ export const createProjectService = async ({
     photo: cloudinary.url(projectRecord.photo),
     brandLogo: cloudinary.url(projectRecord.brandLogo),
   };
+};
+
+export const getAllProjectsService = async () => {
+  const projectsList = await project
+    .find({})
+    .populate({ path: 'account', select: '_id name email' })
+    .lean();
+
+  return projectsList;
 };
