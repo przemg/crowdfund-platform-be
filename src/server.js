@@ -4,7 +4,7 @@ import session from 'express-session';
 import csrf from 'csurf';
 import cookieParser from 'cookie-parser';
 import config from './config/index.js';
-import connect from './utils/connect.js';
+import connectMongoose from './config/connectMongoose.js';
 
 // Simple async/await error handling
 import 'express-async-errors';
@@ -21,7 +21,7 @@ const startServer = () => {
   const app = express();
 
   // Connect to database
-  connect();
+  connectMongoose();
 
   app.use(express.json());
   app.use(cookieParser());

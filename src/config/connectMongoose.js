@@ -1,8 +1,8 @@
 import mongoose from 'mongoose';
 import logger from 'loglevel';
-import config from '../config/index.js';
+import config from './index.js';
 
-const connect = async () => {
+const connectMongoose = async () => {
   await mongoose.connect(config.databaseURL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -12,4 +12,4 @@ const connect = async () => {
   logger.info('Successfully connected to the database');
 };
 
-export default connect;
+export default connectMongoose;

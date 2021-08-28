@@ -1,20 +1,12 @@
 import * as yup from 'yup';
-import AppError from '../../utils/AppError.js';
-import { DATA_VALIDATION_ERROR } from '../../data/commonErrors.js';
+import createValidator from '../../utils/createValidator.js';
 
 const loginSchema = yup.object().shape({
   email: yup.string().email().required(),
   password: yup.string().required(),
 });
 
-export const loginValidation = async (req, res, next) => {
-  try {
-    await loginSchema.validate(req.body, { abortEarly: false });
-    next();
-  } catch ({ errors }) {
-    throw new AppError(DATA_VALIDATION_ERROR, { details: errors });
-  }
-};
+export const loginValidation = createValidator(loginSchema);
 
 const signupSchema = yup.object().shape({
   email: yup.string().email().required(),
@@ -31,11 +23,4 @@ const signupSchema = yup.object().shape({
     .required(),
 });
 
-export const signupValidation = async (req, res, next) => {
-  try {
-    await signupSchema.validate(req.body, { abortEarly: false });
-    next();
-  } catch ({ errors }) {
-    throw new AppError(DATA_VALIDATION_ERROR, { details: errors });
-  }
-};
+export const signupValidation = createValidator(signupSchema);

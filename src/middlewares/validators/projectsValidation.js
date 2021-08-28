@@ -1,6 +1,5 @@
 import * as yup from 'yup';
-import AppError from '../../utils/AppError.js';
-import { DATA_VALIDATION_ERROR } from '../../data/commonErrors.js';
+import createValidator from '../../utils/createValidator.js';
 
 const createProjectSchema = yup.object().shape({
   title: yup.string().min(10).max(50).required(),
@@ -32,11 +31,4 @@ const createProjectSchema = yup.object().shape({
     .required('brandLogo and photo are a required fields'),
 });
 
-export const createProjectValidation = async (req, res, next) => {
-  try {
-    await createProjectSchema.validate({ ...req.body, files: req.files }, { abortEarly: false });
-    next();
-  } catch ({ errors }) {
-    throw new AppError(DATA_VALIDATION_ERROR, { details: errors });
-  }
-};
+export const createProjectValidation = createValidator(createProjectSchema);
