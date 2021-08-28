@@ -60,5 +60,9 @@ export const getAllProjectsService = async () => {
     .populate({ path: 'account', select: '_id name email' })
     .lean();
 
-  return projectsList;
+  return projectsList.map((item) => ({
+    ...item,
+    brandLogo: cloudinary.url(item.brandLogo),
+    photo: cloudinary.url(item.photo),
+  }));
 };
