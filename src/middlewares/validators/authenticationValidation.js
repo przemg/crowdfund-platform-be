@@ -7,7 +7,7 @@ const loginSchema = yup.object().shape({
   password: yup.string().required(),
 });
 
-const loginValidation = async (req, res, next) => {
+export const loginValidation = async (req, res, next) => {
   try {
     await loginSchema.validate(req.body, { abortEarly: false });
     next();
@@ -31,7 +31,7 @@ const signupSchema = yup.object().shape({
     .required(),
 });
 
-const signupValidation = async (req, res, next) => {
+export const signupValidation = async (req, res, next) => {
   try {
     await signupSchema.validate(req.body, { abortEarly: false });
     next();
@@ -39,5 +39,3 @@ const signupValidation = async (req, res, next) => {
     throw new AppError(DATA_VALIDATION_ERROR, { details: errors });
   }
 };
-
-export default { loginValidation, signupValidation };

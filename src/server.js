@@ -15,6 +15,7 @@ import csrfErrorHandler from './middlewares/csrfErrorHandler.js';
 import notFoundError from './middlewares/notFoundError.js';
 import { sessionConfig } from './config/sessionConfig.js';
 import { csrfConfig } from './config/csrfConfig.js';
+import multerErrorHandler from './middlewares/multerErrorHandler.js';
 
 const startServer = () => {
   const app = express();
@@ -33,6 +34,7 @@ const startServer = () => {
   // Error handling
   app.use(notFoundError);
   app.use(csrfErrorHandler);
+  app.use(multerErrorHandler);
   app.use(genericErrorHandler);
 
   app.listen(config.port, () => {
