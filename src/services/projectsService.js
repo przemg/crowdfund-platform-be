@@ -4,6 +4,7 @@ import AppError from '../utils/AppError.js';
 import cloudinary from '../config/cloudinary.js';
 
 export const createProjectService = async ({
+  account,
   title,
   shortDescription,
   about,
@@ -27,6 +28,7 @@ export const createProjectService = async ({
   const rewardsJSON = JSON.parse(rewards);
 
   const projectRecord = await project.create({
+    accountId: account._id,
     title,
     shortDescription,
     about,
@@ -39,6 +41,7 @@ export const createProjectService = async ({
   });
 
   return {
+    account,
     title: projectRecord.title,
     shortDescription: projectRecord.shortDescription,
     about: projectRecord.about,

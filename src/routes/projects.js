@@ -7,8 +7,7 @@ import multer from '../config/multer.js';
 const getProjectRoutes = () => {
   const router = express.Router();
 
-  router.post(
-    '/',
+  router.route('/').post(
     isAuthenticated(),
     multer.fields([
       { name: 'brandLogo', maxCount: 1 },
