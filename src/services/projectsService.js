@@ -1,4 +1,5 @@
-import { PASSED_DATA_EXISTS } from '../data/commonErrors.js';
+import mongoose from 'mongoose';
+import { PASSED_DATA_EXISTS, RESOURCE_NOT_FOUND } from '../data/commonErrors.js';
 import project from '../models/project.js';
 import AppError from '../utils/AppError.js';
 import cloudinary from '../config/cloudinary.js';
@@ -57,7 +58,8 @@ export const createProjectService = async ({
 export const getAllProjectsService = async () => {
   const projectsList = await project
     .find({})
-    .populate({ path: 'account', select: '_id name email' })
+    .select('account title about brandLogo photo createdAt')
+    .populate({ path: 'account', select: 'name' })
     .lean();
 
   return projectsList.map((item) => ({
@@ -65,4 +67,27 @@ export const getAllProjectsService = async () => {
     brandLogo: cloudinary.url(item.brandLogo),
     photo: cloudinary.url(item.photo),
   }));
+};
+
+export const getProjectDetailsService = async ({ projectId }) => {
+  const projectRecord =
+    mongoose.isValidObjectId(projectId) &&
+    (await project
+      .findOne({ _id: projectId })
+      .populate({
+        path: 'account',
+        select: '_id name email',
+      })
+      .lean());
+
+  if (!projectRecord) {
+    throw new AppError(RESOURCE_NOT_FOUND, {
+      customMessage: 'Project with given id cannot be found',
+    });
+  }
+
+  projectRecord.brandLogo = cloudinary.url(projectRecord.brandLogo);
+  projectRecord.photo = cloudinary.url(projectRecord.photo);
+
+  return projectRecord;
 };

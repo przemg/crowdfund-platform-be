@@ -2,6 +2,7 @@ import express from 'express';
 import {
   createProjectController,
   getAllProjectsController,
+  getProjectDetailsController,
 } from '../controllers/projectsController.js';
 import isAuthenticated from '../middlewares/isAuthenticated.js';
 import { createProjectValidation } from '../middlewares/validators/index.js';
@@ -22,6 +23,8 @@ const getProjectsRoutes = () => {
       createProjectValidation,
       createProjectController,
     );
+
+  router.get('/:projectId', isAuthenticated(), getProjectDetailsController);
 
   return router;
 };

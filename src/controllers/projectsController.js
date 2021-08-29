@@ -1,4 +1,8 @@
-import { createProjectService, getAllProjectsService } from '../services/projectsService.js';
+import {
+  createProjectService,
+  getAllProjectsService,
+  getProjectDetailsService,
+} from '../services/projectsService.js';
 
 export const createProjectController = async (req, res) => {
   const { account } = req.session;
@@ -29,4 +33,12 @@ export const getAllProjectsController = async (req, res) => {
   const projectsList = await getAllProjectsService();
 
   res.status(200).json({ message: 'Projects list successfully returned', data: projectsList });
+};
+
+export const getProjectDetailsController = async (req, res) => {
+  const { projectId } = req.params;
+
+  const projectRecord = await getProjectDetailsService({ projectId });
+
+  res.status(200).json({ message: 'Project details successfully returned', data: projectRecord });
 };
