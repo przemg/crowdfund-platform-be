@@ -58,7 +58,7 @@ export const createProjectService = async ({
 export const getAllProjectsService = async () => {
   const projectsList = await project
     .find({})
-    .select('account title about brandLogo photo createdAt')
+    .select('account title about brandLogo brandColor photo createdAt')
     .populate({ path: 'account', select: 'name' })
     .lean();
 
